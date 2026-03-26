@@ -15,8 +15,8 @@ export function Hero() {
 
       <p className="hero-stagger-3 text-[1.15rem] text-[var(--text-secondary)] max-w-[560px] leading-[1.8] mb-12 font-light">
         A body of strategic frameworks exploring how organizations and
-        individuals must restructure for the AI-native era — where the
-        bottleneck is no longer technology, but organizational design.
+        individuals must restructure for an era of exponential capability —
+        where the bottleneck is no longer technology, but organizational design.
       </p>
 
     </section>

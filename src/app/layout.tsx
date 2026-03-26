@@ -16,9 +16,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Nicolas — Strategic Frameworks for the AI-Native Era",
+  title: "Nicolas — Strategic Frameworks for the Era Ahead",
   description:
-    "Strategic frameworks exploring how organizations must restructure for the AI-native era — where the bottleneck is no longer technology, but organizational design.",
+    "Strategic frameworks exploring how organizations must restructure for an era of exponential capability — where the bottleneck is no longer technology, but organizational design.",
 };
 
 export default function RootLayout({

@@ -1,8 +1,8 @@
 const frameworks = [
   {
     color: "var(--color-accent-emerald)",
-    name: "AI-Native Teams",
-    desc: "How organizations must restructure their units of work — moving from departments to high-context, AI-augmented small teams optimized for correctness over volume.",
+    name: "High-Context Teams",
+    desc: "How organizations must restructure their units of work — moving from departments to high-context, augmented small teams optimized for correctness over volume.",
   },
   {
     color: "var(--color-accent-violet)",
@@ -17,12 +17,12 @@ const frameworks = [
   {
     color: "var(--color-accent-gold)",
     name: "Talent Identification",
-    desc: "Protocols for identifying individuals who can direct AI rather than be directed by it — replacing legacy performance rubrics with diagnostic missions.",
+    desc: "Protocols for identifying individuals who can direct machines rather than be directed by them — replacing legacy performance rubrics with diagnostic missions.",
   },
   {
     color: "var(--color-accent-coral)",
     name: "Autonomy Levels",
-    desc: "A five-level progression model for AI-driven development — from assisted autocomplete to fully autonomous production systems.",
+    desc: "A five-level progression model for autonomous development — from assisted tooling to fully self-directed production systems.",
   },
   {
     color: "var(--color-accent-magenta)",
@@ -44,7 +44,7 @@ export function Frameworks() {
         Framework Library
       </div>
       <h2 className="font-serif text-[clamp(1.7rem,3.8vw,3rem)] font-normal leading-[1.25] tracking-[-0.015em] max-w-[700px] mb-6">
-        Six interconnected frameworks for the AI-native transition.
+        Six interconnected frameworks for the transition ahead.
       </h2>
       <p className="text-[var(--text-secondary)] text-[1.05rem] max-w-[600px] leading-[1.85] font-light">
         Each framework addresses a specific layer of the transition — from team
