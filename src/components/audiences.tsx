@@ -3,12 +3,12 @@ const tracks = [
     label: "Track 1",
     labelColor: "var(--color-accent-emerald)",
     title: "Leaders & Organizations",
-    body: "General managers who know AI should be transforming their organizations but have no playbook for moving from hype to results. The bottleneck isn't technology — it's that their company's purpose and decision logic were never written down.",
+    body: "General managers who sense the transformation is overdue but have no playbook for moving from hype to results. The bottleneck isn't technology — it's that their company's purpose and decision logic were never written down.",
     glowColor: "rgba(52,211,153,0.08)",
     arrowColor: "var(--color-accent-emerald)",
     items: [
       { bold: "Strategic workshops", rest: "for leadership teams" },
-      { bold: "AI readiness assessments", rest: "with prioritized roadmaps" },
+      { bold: "Readiness assessments", rest: "with prioritized roadmaps" },
       { bold: "1:1 coaching", rest: "for frontier leadership skills" },
     ],
   },
@@ -16,7 +16,7 @@ const tracks = [
     label: "Track 2",
     labelColor: "var(--color-accent-gold)",
     title: "Individuals & Professionals",
-    body: "Mid-career professionals with real domain expertise who feel the ground shifting. They're using AI tools but sense that producing faster isn't the same as staying relevant. They need a framework for continuous recalibration.",
+    body: "Mid-career professionals with real domain expertise who feel the ground shifting. They're producing faster than ever but sense that speed alone isn't the same as staying relevant. They need a framework for continuous recalibration.",
     glowColor: "rgba(250,204,21,0.08)",
     arrowColor: "var(--color-accent-gold)",
     items: [

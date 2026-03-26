@@ -10,7 +10,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="text-[var(--text-muted)] text-[0.8rem] md:text-right">
-        Strategic frameworks for the AI-native transition.
+        Strategic frameworks for the transition ahead.
         <br />
         Prepared for conversation — March 2026.
       </div>

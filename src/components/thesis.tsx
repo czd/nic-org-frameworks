@@ -7,7 +7,7 @@ const thesisCards = [
   {
     color: "var(--color-accent-cyan)",
     title: "Volume vs. Correctness",
-    body: "AI has made production volume free. The only remaining scarcity is correctness — the ability to recognize whether output is strategically sound, architecturally coherent, and worth shipping.",
+    body: "Production volume is now free. The only remaining scarcity is correctness — the ability to recognize whether output is strategically sound, architecturally coherent, and worth shipping.",
   },
   {
     color: "var(--color-accent-violet)",
@@ -34,14 +34,14 @@ export function Thesis() {
         Core Thesis
       </div>
       <h2 className="font-serif text-[clamp(1.7rem,3.8vw,3rem)] font-normal leading-[1.25] tracking-[-0.015em] max-w-[700px] mb-6">
-        AI readiness is an organizational design problem — not a technology
+        Readiness is an organizational design problem — not a technology
         adoption problem.
       </h2>
       <p className="text-[var(--text-secondary)] text-[1.05rem] max-w-[600px] leading-[1.85] font-light">
-        Most organizations are drowning in AI-generated volume while lacking the
-        structures to ensure correctness. The frameworks I&apos;ve developed address
-        the gap between what AI can do and what organizations are equipped to
-        capture.
+        Most organizations are drowning in machine-generated volume while lacking
+        the structures to ensure correctness. The frameworks I&apos;ve developed address
+        the gap between what machines can produce and what organizations are
+        equipped to capture.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-[1px] mt-10 md:mt-12">
