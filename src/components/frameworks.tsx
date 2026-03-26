@@ -35,7 +35,7 @@ export function Frameworks() {
   return (
     <section
       id="frameworks"
-      className="reveal relative max-w-[1120px] mx-auto px-6 py-32 md:py-32"
+      className="reveal relative max-w-[1120px] mx-auto px-6 py-20 md:py-32"
     >
       {/* Ambient glow */}
       <div className="absolute top-[10%] right-0 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(0,200,255,0.04)_0%,transparent_70%)] pointer-events-none" />
@@ -56,7 +56,7 @@ export function Frameworks() {
         {frameworks.map((fw, i) => (
           <div
             key={fw.name}
-            className={`grid grid-cols-1 md:grid-cols-[200px_1fr] gap-2 md:gap-8 items-baseline py-8 border-b border-[var(--border-subtle)] transition-[padding-left] duration-300 hover:pl-2 ${
+            className={`grid grid-cols-1 md:grid-cols-[200px_1fr] gap-1.5 md:gap-8 items-baseline py-6 md:py-8 border-b border-[var(--border-subtle)] transition-[padding-left] duration-300 hover:pl-2 ${
               i === 0 ? "border-t" : ""
             }`}
           >

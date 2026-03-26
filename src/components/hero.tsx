@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32 pb-24 bg-[#080808]">
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-16 md:pt-32 md:pb-24 bg-[#080808]">
       {/* Ambient glow */}
       <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(168,85,247,0.06)_0%,transparent_70%)] pointer-events-none" />
 

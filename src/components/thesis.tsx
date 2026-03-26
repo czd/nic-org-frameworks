@@ -25,7 +25,7 @@ export function Thesis() {
   return (
     <section
       id="thesis"
-      className="reveal relative max-w-[1120px] mx-auto px-6 py-32 md:py-32"
+      className="reveal relative max-w-[1120px] mx-auto px-6 py-20 md:py-32"
     >
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[400px] bg-[radial-gradient(circle,rgba(255,77,106,0.04)_0%,transparent_70%)] pointer-events-none" />
@@ -44,11 +44,11 @@ export function Thesis() {
         capture.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[1px] mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-[1px] mt-10 md:mt-12">
         {thesisCards.map((card) => (
           <div
             key={card.title}
-            className="relative group bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[14px] p-11 md:p-11 transition-all duration-400 hover:border-[var(--border-hover)] hover:-translate-y-[3px]"
+            className="relative group bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[14px] p-6 md:p-11 transition-all duration-400 hover:border-[var(--border-hover)] hover:-translate-y-[3px]"
           >
             {/* Glow */}
             <div

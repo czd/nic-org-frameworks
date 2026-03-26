@@ -7,7 +7,7 @@ const flowNodes = [
 
 export function ValueFlow() {
   return (
-    <section className="reveal max-w-[1120px] mx-auto px-6 py-32 md:py-32 text-center">
+    <section className="reveal max-w-[1120px] mx-auto px-6 py-20 md:py-32 text-center">
       <div className="text-[0.65rem] tracking-[0.18em] uppercase font-semibold mb-6 text-accent-violet">
         The Bridge
       </div>
