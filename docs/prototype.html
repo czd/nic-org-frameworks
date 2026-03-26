@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicolas — Strategic Frameworks for the AI-Native Era</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #08080a;
+    --bg-card: #111114;
+    --bg-card-hover: #16161a;
+    --border: #1e1e24;
+    --text: #e8e8ed;
+    --text-secondary: #7a7a88;
+    --text-dim: #4a4a56;
+    --emerald: #34D399;
+    --gold: #FACC15;
+    --magenta: #FF4D6A;
+    --violet: #A855F7;
+    --cyan: #00C8FF;
+    --coral: #FF6B6B;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ——— NAV ——— */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(8,8,10,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(30,30,36,0.5);
+  }
+  nav .logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  nav .logo span { color: var(--text-dim); font-weight: 400; }
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  nav ul li a:hover { color: var(--text); }
+
+  /* ——— HERO ——— */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 20%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    max-width: 800px;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--violet), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+  .hero-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    opacity: 0;
+    cursor: default;
+    transition: opacity 0.6s ease;
+    user-select: none;
+  }
+  .hero-tagline:hover { opacity: 1; }
+
+  /* ——— SECTIONS ——— */
+  section {
+    padding: 7rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+  }
+  .section-body {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 600px;
+    line-height: 1.85;
+  }
+
+  /* ——— DIVIDER ——— */
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ——— THESIS ——— */
+  #thesis { position: relative; }
+  #thesis::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 400px;
+    background: radial-gradient(circle, rgba(255,77,106,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .thesis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .thesis-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem 2rem 2.2rem;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .thesis-card:hover {
+    background: var(--bg-card-hover);
+    border-color: #2a2a32;
+  }
+  .thesis-card .card-icon {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-bottom: 1.2rem;
+  }
+  .thesis-card h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+    letter-spacing: -0.01em;
+  }
+  .thesis-card p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  /* ——— FRAMEWORKS ——— */
+  #frameworks { position: relative; }
+  #frameworks::before {
+    content: '';
+    position: absolute;
+    top: 10%; right: 0;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .fw-list {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .fw-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    align-items: baseline;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: padding-left 0.3s;
+  }
+  .fw-item:first-child { border-top: 1px solid var(--border); }
+  .fw-item:hover { padding-left: 0.5rem; }
+  .fw-item .fw-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .fw-item .fw-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .fw-item .fw-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ——— AUDIENCES ——— */
+  #audiences { position: relative; }
+  #audiences::before {
+    content: '';
+    position: absolute;
+    top: 20%; left: 0;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(250,204,21,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .audience-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem 2.2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .audience-card:hover {
+    background: var(--bg-card-hover);
+    border-color: #2a2a32;
+  }
+  .audience-card::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .audience-card:first-child::before {
+    background: radial-gradient(circle, rgba(52,211,153,0.08), transparent 70%);
+  }
+  .audience-card:last-child::before {
+    background: radial-gradient(circle, rgba(250,204,21,0.08), transparent 70%);
+  }
+  .audience-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+  }
+  .audience-card h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .audience-card p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .value-stream {
+    display: flex; flex-direction: column; gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+  .vs-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .vs-item .vs-arrow {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+  .vs-item span { font-weight: 500; color: var(--text); }
+
+  /* ——— VALUE FLOW ——— */
+  #value-flow { text-align: center; }
+  .flow-visual {
+    margin-top: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .flow-node {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem 1.8rem;
+    text-align: center;
+    min-width: 160px;
+  }
+  .flow-node .fn-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.4rem;
+  }
+  .flow-node .fn-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .flow-arrow {
+    color: var(--text-dim);
+    font-size: 1.4rem;
+    padding: 0 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ——— FOOTER ——— */
+  footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .footer-left .footer-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .footer-left .footer-location {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+  .footer-right {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    text-align: right;
+  }
+
+  /* ——— ANIMATIONS ——— */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ——— RESPONSIVE ——— */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.5rem; }
+    nav ul li a { font-size: 0.75rem; }
+    section { padding: 5rem 1.5rem; }
+    .thesis-grid, .audience-grid { grid-template-columns: 1fr; }
+    .fw-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .flow-visual { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); padding: 0.4rem 0; }
+    footer { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+    .footer-right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Nicolas <span>/ Frameworks</span></div>
+  <ul>
+    <li><a href="#thesis">Thesis</a></li>
+    <li><a href="#frameworks">Frameworks</a></li>
+    <li><a href="#audiences">Audiences</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Strategic Research & Frameworks</div>
+  <h1>Making organizations <em>machine-readable</em></h1>
+  <p class="hero-sub">
+    A body of strategic frameworks exploring how organizations and individuals 
+    must restructure for the AI-native era — where the bottleneck is no longer 
+    technology, but organizational design.
+  </p>
+  <div class="hero-tagline">The technology revolution is here. The human one is about to begin.</div>
+</div>
+
+<hr class="divider">
+
+<!-- THESIS -->
+<section id="thesis" class="fade-in">
+  <div class="section-label" style="color: var(--magenta);">Core Thesis</div>
+  <h2 class="section-heading">AI readiness is an organizational design problem — not a technology adoption problem.</h2>
+  <p class="section-body">
+    Most organizations are drowning in AI-generated volume while lacking the structures 
+    to ensure correctness. The frameworks I've developed address the gap between 
+    what AI can do and what organizations are equipped to capture.
+  </p>
+
+  <div class="thesis-grid">
+    <div class="thesis-card">
+      <div class="card-icon" style="background: var(--coral);"></div>
+      <h3>The Coordination Crisis</h3>
+      <p>As individual output multiplies, legacy team structures create exponential coordination costs. The mathematics of communication pathways makes this inevitable, not optional.</p>
+    </div>
+    <div class="thesis-card">
+      <div class="card-icon" style="background: var(--cyan);"></div>
+      <h3>Volume vs. Correctness</h3>
+      <p>AI has made production volume free. The only remaining scarcity is correctness — the ability to recognize whether output is strategically sound, architecturally coherent, and worth shipping.</p>
+    </div>
+    <div class="thesis-card">
+      <div class="card-icon" style="background: var(--violet);"></div>
+      <h3>The Intent Gap</h3>
+      <p>Organizations have never needed to write down their values and decision logic. Humans filled the gaps through osmosis. Agents cannot. This gap is now the primary bottleneck.</p>
+    </div>
+    <div class="thesis-card">
+      <div class="card-icon" style="background: var(--emerald);"></div>
+      <h3>Ambition Expansion</h3>
+      <p>The goal is not efficiency — doing the same with fewer people. It's expansion — using the multiplier to pursue missions that were previously impossible at any headcount.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FRAMEWORKS -->
+<section id="frameworks" class="fade-in">
+  <div class="section-label" style="color: var(--cyan);">Framework Library</div>
+  <h2 class="section-heading">Six interconnected frameworks for the AI-native transition.</h2>
+  <p class="section-body">
+    Each framework addresses a specific layer of the transition — from team architecture 
+    to individual skill development to autonomous system governance.
+  </p>
+
+  <div class="fw-list">
+    <div class="fw-item">
+      <div class="fw-name">
+        <div class="fw-dot" style="background: var(--emerald);"></div>
+        AI-Native Teams
+      </div>
+      <div class="fw-desc">How organizations must restructure their units of work — moving from departments to high-context, AI-augmented small teams optimized for correctness over volume.</div>
+    </div>
+    <div class="fw-item">
+      <div class="fw-name">
+        <div class="fw-dot" style="background: var(--violet);"></div>
+        Intent Engineering
+      </div>
+      <div class="fw-desc">The discipline of making organizational purpose, values, and decision boundaries machine-readable — going beyond prompts and context to encode what agents should want.</div>
+    </div>
+    <div class="fw-item">
+      <div class="fw-name">
+        <div class="fw-dot" style="background: var(--cyan);"></div>
+        Frontier Operations
+      </div>
+      <div class="fw-desc">Five competencies for working at the expanding boundary between human judgment and machine execution. Skills that expire every 90 days as the capability frontier moves.</div>
+    </div>
+    <div class="fw-item">
+      <div class="fw-name">
+        <div class="fw-dot" style="background: var(--gold);"></div>
+        Talent Identification
+      </div>
+      <div class="fw-desc">Protocols for identifying individuals who can direct AI rather than be directed by it — replacing legacy performance rubrics with diagnostic missions.</div>
+    </div>
+    <div class="fw-item">
+      <div class="fw-name">
+        <div class="fw-dot" style="background: var(--coral);"></div>
+        Autonomy Levels
+      </div>
+      <div class="fw-desc">A five-level progression model for AI-driven development — from assisted autocomplete to fully autonomous production systems.</div>
+    </div>
+    <div class="fw-item">
+      <div class="fw-name">
+        <div class="fw-dot" style="background: var(--magenta);"></div>
+        Strategic Reorganization
+      </div>
+      <div class="fw-desc">The operational playbook for transitioning legacy organizations into federated, high-autonomy structures — including the economic case and implementation mandates.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- AUDIENCES -->
+<section id="audiences" class="fade-in">
+  <div class="section-label" style="color: var(--gold);">Two Audiences</div>
+  <h2 class="section-heading">The frameworks serve two distinct groups with connected needs.</h2>
+
+  <div class="audience-grid">
+    <div class="audience-card">
+      <div class="audience-label" style="color: var(--emerald);">Track 1</div>
+      <h3>Leaders & Organizations</h3>
+      <p>
+        General managers who know AI should be transforming their organizations 
+        but have no playbook for moving from hype to results. The bottleneck isn't 
+        technology — it's that their company's purpose and decision logic were 
+        never written down.
+      </p>
+      <div class="value-stream">
+        <div class="vs-item">
+          <span class="vs-arrow" style="color: var(--emerald);">→</span>
+          <span>Strategic workshops</span> for leadership teams
+        </div>
+        <div class="vs-item">
+          <span class="vs-arrow" style="color: var(--emerald);">→</span>
+          <span>AI readiness assessments</span> with prioritized roadmaps
+        </div>
+        <div class="vs-item">
+          <span class="vs-arrow" style="color: var(--emerald);">→</span>
+          <span>1:1 coaching</span> for frontier leadership skills
+        </div>
+      </div>
+    </div>
+
+    <div class="audience-card">
+      <div class="audience-label" style="color: var(--gold);">Track 2</div>
+      <h3>Individuals & Professionals</h3>
+      <p>
+        Mid-career professionals with real domain expertise who feel the ground 
+        shifting. They're using AI tools but sense that producing faster isn't 
+        the same as staying relevant. They need a framework for continuous 
+        recalibration.
+      </p>
+      <div class="value-stream">
+        <div class="vs-item">
+          <span class="vs-arrow" style="color: var(--gold);">→</span>
+          <span>Public workshops</span> with self-assessment frameworks
+        </div>
+        <div class="vs-item">
+          <span class="vs-arrow" style="color: var(--gold);">→</span>
+          <span>Frontier skills bootcamp</span> for applied competencies
+        </div>
+        <div class="vs-item">
+          <span class="vs-arrow" style="color: var(--gold);">→</span>
+          <span>Career navigation</span> coaching for transitions
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VALUE FLOW -->
+<section id="value-flow" class="fade-in">
+  <div class="section-label" style="color: var(--violet);">The Bridge</div>
+  <h2 class="section-heading" style="margin-left: auto; margin-right: auto;">The two tracks reinforce each other.</h2>
+  <p class="section-body" style="margin-left: auto; margin-right: auto; text-align: center;">
+    Leaders who attend workshops ask how to help their people navigate the shift. 
+    Individuals who develop frontier skills become the talent leaders need. 
+    Each track generates demand for the other.
+  </p>
+
+  <div class="flow-visual">
+    <div class="flow-node">
+      <div class="fn-label">Entry</div>
+      <div class="fn-title">Free talks</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">
+      <div class="fn-label">Engagement</div>
+      <div class="fn-title">Workshops</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">
+      <div class="fn-label">Depth</div>
+      <div class="fn-title">Consulting</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">
+      <div class="fn-label">Ongoing</div>
+      <div class="fn-title">Coaching</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-name">Nicolas</div>
+    <div class="footer-location">Stavanger, Norway</div>
+  </div>
+  <div class="footer-right">
+    Strategic frameworks for the AI-native transition.<br>
+    Prepared for conversation — March 2026.
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
