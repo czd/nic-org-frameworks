@@ -31,7 +31,7 @@ export function Audiences() {
   return (
     <section
       id="audiences"
-      className="reveal relative max-w-[1120px] mx-auto px-6 py-32 md:py-32"
+      className="reveal relative max-w-[1120px] mx-auto px-6 py-20 md:py-32"
     >
       {/* Ambient glow */}
       <div className="absolute top-[20%] left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(250,204,21,0.04)_0%,transparent_70%)] pointer-events-none" />
@@ -50,7 +50,7 @@ export function Audiences() {
         {tracks.map((track) => (
           <div
             key={track.label}
-            className="relative overflow-hidden bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[14px] p-10 transition-all duration-300 hover:bg-[var(--bg-card-hover)] hover:border-[var(--border-hover)]"
+            className="relative overflow-hidden bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[14px] p-6 md:p-10 transition-all duration-300 hover:bg-[var(--bg-card-hover)] hover:border-[var(--border-hover)]"
           >
             {/* Corner glow */}
             <div
